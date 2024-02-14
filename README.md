@@ -1,4 +1,4 @@
-# appone
+# Minishop [![Netlify Status](https://api.netlify.com/api/v1/badges/f5c9e644-06b3-47fb-a79a-28757edc5aea/deploy-status)](https://app.netlify.com/sites/minishopone/deploys)
 
 This template should help get you started developing with Vue 3 in Vite.
 
