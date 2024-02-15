@@ -1,40 +1,36 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+import type { Products, Product } from '@/ambient'
 import { useProductStore } from '@/stores/product'
 const productStore = useProductStore()
+const productActive = computed<Products>(() => {
+  return productStore.attributes.reduce((pv: Products, cv) => {
+    if (!pv.find((p) => p.$id === cv.product.$id && cv.stock > 0)) {
+      pv.push(cv.product)
+    }
+    return pv
+  }, [])
+})
+
+function getProductPrice(product: Product): number {
+  const productAttributes = productStore.attributes.filter((a) => product.$id === a.product.$id)
+  if (productAttributes.length === 1) {
+    return productAttributes[0].price
+  }
+  return productAttributes.sort((a, b) => a.price - b.price)[0].price
+}
 </script>
 
 <template>
   <div class="">
-    <div class="flex justify-between items-center">
-      <h1 class="">Dashboard</h1>
-      <div>
-        <select>
-          <option selected>Last 7 Days</option>
-          <option>Last 2 Weeks</option>
-          <option>Last Month</option>
-          <option>Last 3 Months</option>
-          <option>Last 6 Months</option>
-          <option>Last Year</option>
-        </select>
-      </div>
-    </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 py-2 divide-x divide-y md:divide-y">
-      <div class="bg-slate-700 text-slate-200 border drop-shadow-sm p-2">
-        <h2 class="text-3xl">{{ productStore.products.length }}</h2>
-        <p><router-link :to="{ name: 'adminproducts' }">Products</router-link></p>
-      </div>
-      <div class="bg-slate-700 text-slate-200 border drop-shadow-sm p-2">
-        <h2 class="text-3xl">24</h2>
-        <p>Orders</p>
-      </div>
-      <div class="bg-slate-700 text-slate-200 border drop-shadow-sm p-2">
-        <h2 class="text-3xl">7</h2>
-        <p>Shipping</p>
-      </div>
-      <div class="bg-slate-700 text-slate-200 border drop-shadow-sm p-2">
-        <h2 class="text-3xl">8</h2>
-        <p>Pending</p>
-      </div>
+    <h2 class="font-semibold text-2xl">Flash Sale</h2>
+    <div class="bg-slate-50">
+      <ul class="grid grid-cols-2 md:grid-cols-4 p-2">
+        <li v-for="product in productActive" :key="product.$id" class="relative h-48 hover:border">
+          {{ product.name }}
+          &#x20B1;{{ getProductPrice(product) }}
+        </li>
+      </ul>
     </div>
   </div>
 </template>
