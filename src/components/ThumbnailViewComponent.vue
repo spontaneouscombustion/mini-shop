@@ -18,6 +18,17 @@ function setPage(n: number): void {
   offset.value = props.limit * (n - 1)
 }
 
+function getMinPrice(product: Product): number {
+  const productAttributes = props.attributes.filter((a) => a.product.$id === product.$id)
+  if (productAttributes.length === 1) {
+    return productAttributes[0].price
+  } else if (productAttributes.length > 1) {
+    return productAttributes.sort((a, b) => a.price - b.price)[0].price
+  } else {
+    return 0
+  }
+}
+
 function countStock(product: Product): number {
   const productAttributes = props.attributes.filter((a) => a.product.$id === product.$id)
   return productAttributes.reduce((pv, cv) => (pv += cv.stock), 0)
@@ -36,7 +47,9 @@ function countStock(product: Product): number {
     >
       <div class="absolute top-0 p-1 flex justify-between text-sm w-full">
         <span class="p-1 rounded bg-slate-800 text-slate-100">{{ countStock(product) }} Items</span>
-        <span class="p-1 rounded bg-orange-700 text-orange-200">&#x20B1;200</span>
+        <span class="p-1 rounded bg-orange-700 text-orange-200"
+          >&#x20B1;{{ getMinPrice(product) }}</span
+        >
       </div>
       <div
         class="absolute bottom-0 w-full h-12 opacity-80"
