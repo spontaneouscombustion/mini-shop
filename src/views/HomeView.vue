@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { Products, Product } from '@/ambient'
+import type { Products, Product, Attributes } from '@/ambient'
 import { useProductStore } from '@/stores/product'
+import ProductListItemComponent from '@/components/ProductListItemComponent.vue'
 const productStore = useProductStore()
 const productActive = computed<Products>(() => {
   return productStore.attributes.reduce((pv: Products, cv) => {
@@ -12,24 +13,22 @@ const productActive = computed<Products>(() => {
   }, [])
 })
 
-function getProductPrice(product: Product): number {
-  const productAttributes = productStore.attributes.filter((a) => product.$id === a.product.$id)
-  if (productAttributes.length === 1) {
-    return productAttributes[0].price
-  }
-  return productAttributes.sort((a, b) => a.price - b.price)[0].price
+function getProductAttribute(product: Product): Attributes {
+  return productStore.attributes.filter((a) => product.$id === a.product.$id)
 }
 </script>
 
 <template>
-  <div class="">
-    <h2 class="font-semibold text-2xl">Flash Sale</h2>
+  <div class="pt-24">
+    <h2 class="font-semibold text-2xl mb-14">Flash Sale</h2>
     <div class="bg-slate-50">
-      <ul class="grid grid-cols-2 md:grid-cols-4 p-2">
-        <li v-for="product in productActive" :key="product.$id" class="relative h-48 hover:border">
-          {{ product.name }}
-          &#x20B1;{{ getProductPrice(product) }}
-        </li>
+      <ul class="grid grid-cols-1 gap-2">
+        <ProductListItemComponent
+          v-for="product in productActive"
+          :key="product.$id"
+          :product="product"
+          :attributes="getProductAttribute(product)"
+        />
       </ul>
     </div>
   </div>
