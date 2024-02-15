@@ -25,19 +25,23 @@ export default <RouteRecordRaw[]>[
     component: () => import('@/views/auth/SignupView.vue')
   },
   {
-    path: '/admin/overview',
-    name: 'adminoverview',
-    component: () => import('@/views/admin/OverviewView.vue'),
+    path: '/admin',
+    children: [
+      {
+        path: '',
+        name: 'adminoverview',
+        component: () => import('@/views/admin/OverviewView.vue')
+      },
+      {
+        path: '/admin/products',
+        name: 'adminproducts',
+        component: () => import('@/views/admin/ProductView.vue')
+      }
+    ],
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      adminOnly: true
     }
   },
-  {
-    path: '/admin/products',
-    name: 'adminproducts',
-    component: () => import('@/views/admin/ProductView.vue'),
-    meta: {
-      requiresAuth: true
-    }
-  }
+  { path: '/:pathMatch(.*)*', name: 'notfound', component: import('@/views/404View.vue') },
 ]
