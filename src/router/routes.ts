@@ -25,6 +25,14 @@ export default <RouteRecordRaw[]>[
     component: () => import('@/views/auth/SignupView.vue')
   },
   {
+    path: '/admin/overview',
+    name: 'adminoverview',
+    component: () => import('@/views/admin/OverviewView.vue'),
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
     path: '/admin/products',
     name: 'adminproducts',
     component: () => import('@/views/admin/ProductView.vue'),
