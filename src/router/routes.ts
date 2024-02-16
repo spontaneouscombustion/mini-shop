@@ -7,6 +7,11 @@ export default <RouteRecordRaw[]>[
     component: HomeView
   },
   {
+    path: '/product/:productid',
+    name: 'productview',
+    component: () => import('@/views/ProductView.vue')
+  },
+  {
     path: '/about',
     name: 'about',
     // route level code-splitting
@@ -43,5 +48,5 @@ export default <RouteRecordRaw[]>[
       adminOnly: true
     }
   },
-  { path: '/:pathMatch(.*)*', name: 'notfound', component: import('@/views/404View.vue') },
+  { path: '/:pathMatch(.*)*', name: 'notfound', component: import('@/views/404View.vue') }
 ]

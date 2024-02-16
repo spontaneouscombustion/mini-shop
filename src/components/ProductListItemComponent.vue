@@ -25,12 +25,24 @@ function getCheapestPrice(attributes: Attributes): number {
         }"
       ></div>
     </div>
-    <div class="p-2 flex flex-col justify-between">
+    <div class="px-2 py-4 flex flex-col justify-between">
       <div>
-        <h3 class="text-2xl">{{ product.name }}</h3>
-        <p class="text-slate-500">{{ product.description }}</p>
+        <h3 class="text-2xl pb-4">
+          <router-link
+            :to="{
+              name: 'productview',
+              params: {
+                productid: product.$id
+              }
+            }"
+            >{{ product.name }}</router-link
+          >
+        </h3>
+        <p class="text-slate-500 text-sm">{{ product.description }}</p>
       </div>
-      &#x20B1;{{ getCheapestPrice(attributes) }}
+      <div>
+        <span class="text-2xl">&#x20B1;{{ getCheapestPrice(attributes) }}</span>
+      </div>
     </div>
   </li>
 </template>
