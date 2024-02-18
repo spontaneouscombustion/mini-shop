@@ -20,7 +20,7 @@ function getProductAttribute(product: Product): Attributes {
 
 <template>
   <div class="pt-24">
-    <div class="grid grid-cols-2 gap-2">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
       <ProductListItemComponent
         v-for="product in productActive"
         :key="product.$id"
