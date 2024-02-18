@@ -12,5 +12,8 @@ export default {
     import('@tailwindcss/typography'),
     DaisyUI
   ],
+  daisyui: {
+    themes: false
+  }
 }
 
