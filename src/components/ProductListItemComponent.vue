@@ -16,33 +16,15 @@ function getCheapestPrice(attributes: Attributes): number {
 </script>
 
 <template>
-  <li class="flex h-48 flex-row">
-    <div class="h-full w-2/5 bg-gray-300">
-      <div
-        class="h-full w-full bg-contain bg-center bg-no-repeat"
-        :style="{
-          backgroundImage: `url(${product.photos[0] ?? 'https://placehold.co/600x400'})`
-        }"
-      ></div>
-    </div>
-    <div class="flex flex-col justify-between px-2 py-4">
-      <div>
-        <h3 class="pb-4 text-2xl">
-          <router-link
-            :to="{
-              name: 'productview',
-              params: {
-                productid: product.$id
-              }
-            }"
-            >{{ product.name }}</router-link
-          >
-        </h3>
-        <p class="text-sm text-slate-500">{{ product.description }}</p>
-      </div>
-      <div>
-        <span class="text-2xl">&#x20B1;{{ getCheapestPrice(attributes) }}</span>
+  <div class="card w-96 bg-base-100 shadow-xl">
+    <figure>
+      <img :src="product.photos[0] ?? 'https://placehold.co/600x400'" />
+    </figure>
+    <div class="card-body">
+      <h2 class="card-title">{{ product.name }}</h2>
+      <div class="card-actions justify-end">
+        <router-link :to="{ name: 'productview', params: { productid: product.$id } }" class="btn btn-primary">Buy Now</router-link>
       </div>
     </div>
-  </li>
+  </div>
 </template>
