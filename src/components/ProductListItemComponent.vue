@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { Attributes, Product } from '@/ambient'
-import { ref } from 'vue';
+import { ref } from 'vue'
 
 defineProps<{
   product: Product
@@ -16,7 +16,6 @@ function getCheapestPrice(attributes: Attributes): number {
 }
 
 const currency = ref<string>(import.meta.env.VITE_DEFAULT_CURRENCY)
-
 </script>
 
 <template>
@@ -29,8 +28,8 @@ const currency = ref<string>(import.meta.env.VITE_DEFAULT_CURRENCY)
     </figure>
     <div class="card-body">
       <h2 class="card-title">{{ product.name }}</h2>
-      <div class="card-actions justify-between items-center">
-        <h3 class="text-primary text-lg">{{ currency }} {{ getCheapestPrice(attributes) }}</h3>
+      <div class="card-actions items-center justify-between">
+        <h3 class="text-lg text-primary">{{ currency }} {{ getCheapestPrice(attributes) }}</h3>
         <router-link
           :to="{ name: 'productview', params: { productid: product.$id } }"
           class="btn btn-primary"
