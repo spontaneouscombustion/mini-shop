@@ -17,11 +17,9 @@ export default (to: RouteLocationNormalized) => {
     }
   }
 
-
-  if(to.meta.adminOnly && ! account.isAdmin){
+  if (to.meta.adminOnly && !account.isAdmin) {
     return {
       name: 'home'
     }
   }
-
 }
