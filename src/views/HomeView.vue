@@ -20,7 +20,7 @@ function getProductAttribute(product: Product): Attributes {
 
 <template>
   <div class="pt-24">
-    <h2 class="font-semibold text-2xl mb-14">Flash Sale</h2>
+    <h2 class="mb-14 text-2xl font-semibold">Flash Sale</h2>
     <div class="bg-slate-50">
       <ul class="grid grid-cols-1 gap-2">
         <ProductListItemComponent

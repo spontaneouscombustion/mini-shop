@@ -13,6 +13,10 @@ declare module 'vue-router' {
   }
 }
 
+export interface AppUser extends Models.User<Models.Preferences> {
+  avatar: string
+}
+
 // To ensure it is treated as a module, add at least one `export` statement
 export interface EmailPassword {
   email: string

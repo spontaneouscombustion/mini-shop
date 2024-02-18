@@ -5,7 +5,7 @@ const productStore = useProductStore()
 
 <template>
   <div class="">
-    <div class="flex justify-between items-center">
+    <div class="flex items-center justify-between">
       <h1 class="">Dashboard</h1>
       <div>
         <select>
@@ -18,20 +18,20 @@ const productStore = useProductStore()
         </select>
       </div>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 py-2 divide-x divide-y md:divide-y">
-      <div class="bg-slate-700 text-slate-200 border drop-shadow-sm p-2">
+    <div class="grid grid-cols-2 divide-x divide-y py-2 md:grid-cols-4 md:divide-y">
+      <div class="border bg-slate-700 p-2 text-slate-200 drop-shadow-sm">
         <h2 class="text-3xl">{{ productStore.products.length }}</h2>
         <p><router-link :to="{ name: 'adminproducts' }">Products</router-link></p>
       </div>
-      <div class="bg-slate-700 text-slate-200 border drop-shadow-sm p-2">
+      <div class="border bg-slate-700 p-2 text-slate-200 drop-shadow-sm">
         <h2 class="text-3xl">24</h2>
         <p>Orders</p>
       </div>
-      <div class="bg-slate-700 text-slate-200 border drop-shadow-sm p-2">
+      <div class="border bg-slate-700 p-2 text-slate-200 drop-shadow-sm">
         <h2 class="text-3xl">7</h2>
         <p>Shipping</p>
       </div>
-      <div class="bg-slate-700 text-slate-200 border drop-shadow-sm p-2">
+      <div class="border bg-slate-700 p-2 text-slate-200 drop-shadow-sm">
         <h2 class="text-3xl">8</h2>
         <p>Pending</p>
       </div>

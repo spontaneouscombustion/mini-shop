@@ -8,8 +8,8 @@ export default {
     extend: {},
   },
   plugins: [
-    import('@tailwindcss/forms'),
-    import('@tailwindcss/typography')
+    import('@tailwindcss/typography'),
+    require("daisyui")
   ],
 }
 

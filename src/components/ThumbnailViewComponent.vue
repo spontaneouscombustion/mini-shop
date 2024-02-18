@@ -36,29 +36,29 @@ function countStock(product: Product): number {
 </script>
 
 <template>
-  <ul class="grid grid-cols-2 md:grid-cols-3 gap-3 py-4 px-2">
+  <ul class="grid grid-cols-2 gap-3 px-2 py-4 md:grid-cols-3">
     <li
       v-for="product in productPage"
       :key="product.$id"
-      class="relative h-48 bg-cover bg-no-repeat bg-center drop-shadow"
+      class="relative h-48 bg-cover bg-center bg-no-repeat drop-shadow"
       :style="{
         backgroundImage: `url(${product.photos[0] ?? 'https://placehold.co/600x400'})`
       }"
     >
-      <div class="absolute top-0 p-1 flex justify-between text-sm w-full">
-        <span class="p-1 rounded bg-slate-800 text-slate-100">{{ countStock(product) }} Items</span>
-        <span class="p-1 rounded bg-orange-700 text-orange-200"
+      <div class="absolute top-0 flex w-full justify-between p-1 text-sm">
+        <span class="rounded bg-slate-800 p-1 text-slate-100">{{ countStock(product) }} Items</span>
+        <span class="rounded bg-orange-700 p-1 text-orange-200"
           >&#x20B1;{{ getMinPrice(product) }}</span
         >
       </div>
       <div
-        class="absolute bottom-0 w-full h-12 opacity-80"
+        class="absolute bottom-0 h-12 w-full opacity-80"
         :class="countStock(product) > 0 ? 'bg-green-900 ' : 'bg-red-900'"
       ></div>
-      <div class="absolute bottom-0 w-full h-12 flex items-center justify-between p-1">
-        <p class="text-sm text-white truncate" v-text="product.name"></p>
-        <button class="text-green-200 hover:bg-green-800 hover:text-green-200 rounded-full p-1">
-          <svg xmlns="http://www.w3.org/2000/svg" class="fill-current h-5" viewBox="0 0 16 16">
+      <div class="absolute bottom-0 flex h-12 w-full items-center justify-between p-1">
+        <p class="truncate text-sm text-white" v-text="product.name"></p>
+        <button class="rounded-full p-1 text-green-200 hover:bg-green-800 hover:text-green-200">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 fill-current" viewBox="0 0 16 16">
             <path
               d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"
             />
@@ -67,12 +67,12 @@ function countStock(product: Product): number {
       </div>
     </li>
   </ul>
-  <div class="flex gap-1 py-3 px-2">
+  <div class="flex gap-1 px-2 py-3">
     <button
-      class="p-2 rounded bg-slate-200 border"
+      class="rounded border bg-slate-200 p-2"
       v-for="n in Math.ceil(items.length / limit)"
       :key="n"
-      :class="{ 'border font-semibold bg-slate-300': n === activePageNumber }"
+      :class="{ 'border bg-slate-300 font-semibold': n === activePageNumber }"
       @click="setPage(n)"
     >
       {{ n }}

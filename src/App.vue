@@ -3,7 +3,8 @@ import { onMounted } from 'vue'
 import { RouterView } from 'vue-router'
 import { useAccountStore } from './stores/account'
 import { useRouter, useRoute } from 'vue-router'
-import NavComponentVue from './components/NavComponent.vue'
+import FooterComponent from './components/FooterComponent.vue'
+import NavbarComponent from './components/NavbarComponent.vue'
 
 const account = useAccountStore()
 const route = useRoute()
@@ -33,16 +34,11 @@ function clearSession() {
 </script>
 
 <template>
-  <div class="relative min-h-screen bg-slate-100 text-slate-700">
-    <NavComponentVue
-      class=""
-      :isAuthenticated="account.isAuthenticated"
-      @clearSession="clearSession()"
-    />
-    <div class="flex justify-center">
-      <div class="w-full md:w-1/2 py-4 px-2">
-        <RouterView />
-      </div>
+  <NavbarComponent :user="account.user" @clearSession="clearSession" />
+  <div class="flex justify-center">
+    <div class="w-full px-2 py-4 md:w-1/2">
+      <RouterView />
     </div>
   </div>
+  <FooterComponent />
 </template>
