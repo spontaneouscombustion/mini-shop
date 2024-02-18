@@ -16,4 +16,12 @@ export default (to: RouteLocationNormalized) => {
       query: { redirect: to.fullPath }
     }
   }
+
+
+  if(to.meta.adminOnly && ! account.isAdmin){
+    return {
+      name: 'home'
+    }
+  }
+
 }
