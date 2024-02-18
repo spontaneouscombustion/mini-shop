@@ -39,7 +39,10 @@ defineProps<{
           tabindex="0"
           class="menu dropdown-content menu-sm z-[1] mt-3 w-52 rounded-box bg-base-100 p-2 shadow"
         >
-          <li><a>Homepage</a></li>
+          <li>
+            <router-link v-if="user?.labels.includes('admin')" :to="{ name: 'adminoverview' }" class="md:hidden">Admin</router-link>
+          </li>
+          <li><router-link :to="{ name: 'home' }">Home</router-link></li>
           <li><a>Portfolio</a></li>
           <li><a>About</a></li>
         </ul>
@@ -47,6 +50,7 @@ defineProps<{
       <router-link :to="{ name: 'home' }" class="btn btn-ghost hidden text-xl md:inline-flex"
         >AppName</router-link
       >
+      <router-link v-if="user?.labels.includes('admin')" :to="{ name: 'adminoverview' }" class="btn btn-ghost hidden md:inline-flex">Admin</router-link>
     </div>
 
     <div class="navbar-end flex gap-2">
