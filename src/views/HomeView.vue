@@ -19,8 +19,8 @@ function getProductAttribute(product: Product): Attributes {
 </script>
 
 <template>
-  <div class="pt-24">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+  <div class="py-8">
+    <div class="grid grid-cols-1 gap-2 md:grid-cols-2">
       <ProductListItemComponent
         v-for="product in productActive"
         :key="product.$id"
