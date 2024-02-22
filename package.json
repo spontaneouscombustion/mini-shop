@@ -10,8 +10,7 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/",
-    "appwrite": "appwrite"
+    "format": "prettier --write src/"
   },
   "dependencies": {
     "@vuelidate/core": "^2.0.3",
@@ -34,7 +33,6 @@
     "@vue/eslint-config-prettier": "^8.0.0",
     "@vue/eslint-config-typescript": "^12.0.0",
     "@vue/tsconfig": "^0.5.0",
-    "appwrite-cli": "^4.2.0",
     "daisyui": "^4.7.2",
     "eslint": "^8.49.0",
     "eslint-plugin-vue": "^9.17.0",
