@@ -1,6 +1,6 @@
-# Minishop [![Netlify Status](https://api.netlify.com/api/v1/badges/f5c9e644-06b3-47fb-a79a-28757edc5aea/deploy-status)](https://app.netlify.com/sites/minishopone/deploys)
+# Micro [![Netlify Status](https://api.netlify.com/api/v1/badges/f5c9e644-06b3-47fb-a79a-28757edc5aea/deploy-status)](https://app.netlify.com/sites/microv1/deploys)
 
-> Attention all shopaholics and curious minds!  Calling all early adopters and tech enthusiasts!  Introducing MiniShopOne, a glimpse into the future of online shopping powered by the innovative Appwrite backend. ✨
+> Attention all shopaholics and curious minds!  Calling all early adopters and tech enthusiasts!  Introducing Micro, a glimpse into the future of online shopping powered by the innovative Appwrite backend. ✨
 >
 >While still under development and not quite ready for prime time, this mini marvel offers a peek into the possibilities waiting just around the corner.  Experience the cutting-edge combination of TypeScript, Vue, and TailwindCSS woven together to create a sleek and intuitive shopping experience.  Dive into the code yourself on [GitHub](https://github.com/spontaneouscombustion/mini-shop) and witness the magic firsthand! ️
 >
